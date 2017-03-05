@@ -1,6 +1,6 @@
 require('./config')
 // Require models
-var User = require('../models/user.js');
+// var User = require('../models/user.js');
 var Motorcycle = require('../models/motorcycle.js');
 
 var mcycle = new Motorcycle({
@@ -9,6 +9,8 @@ var mcycle = new Motorcycle({
   model: 'FZ6'
 })
 
-var me = new User({name: 'Jake'})
-me.motorcycles.push(mcycle);
-me.save();
+mcycle.save();
+
+// var me = new User({name: 'Jake'})
+// me.motorcycles.push(mcycle);
+// me.save();

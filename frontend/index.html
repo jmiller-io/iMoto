@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="iMotoApp">
   <head>
     <title>iMoto</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
@@ -8,5 +8,15 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <header>iMoto</header>
+    <section ng-controller="iMotoController as imoto">
+    <ul>
+      <li ng-repeat="motorcycle in imoto.all" data-id="{{motorcycle._id}}">
+        {{motorcycle.year}} <strong>{{motorcycle.make}} {{motorcycle.model}}</strong>
+      </li>
+    </ul>
+    </section>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/iMotoController.js"></script>
   </body>
 </html>
