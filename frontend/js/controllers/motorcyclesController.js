@@ -1,6 +1,7 @@
 angular.module('iMotoApp')
   .controller('MotorcyclesController', MotorcyclesController)
 
+
   MotorcyclesController.$inject = ['MotorcyclesService', '$scope'];
 
   function MotorcyclesController(MotorcyclesService, $scope) {

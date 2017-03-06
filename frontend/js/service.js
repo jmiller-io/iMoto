@@ -11,9 +11,9 @@ angular.module('iMotoApp')
       list: function() {
         return motorcycles
       },
-      find: function(_id) {
+      find: function(id) {
         return _.find(motorcycles, function(motorcycle) {
-          return motorcycle._id == _id
+          return motorcycle._id == id
         })
       }
     }
