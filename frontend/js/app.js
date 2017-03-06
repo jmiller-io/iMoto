@@ -16,6 +16,6 @@
           templateUrl: 'motorcycles-detail.html',
           controller: 'MotorcyclesDetailController'
         });
-      $urlRouterProvider.otherwise('/motorcycles');
+      $urlRouterProvider.otherwise('/');
     }
 })();
