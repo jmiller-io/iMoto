@@ -24,6 +24,13 @@ var mcycle3 = new Motorcycle({
   model: 'FZ09'
 })
 mcycle3.save();
+
+var mcycle4 = new Motorcycle({
+  year: 2016,
+  make: 'Ducati',
+  model: 'Scrambler'
+})
+mcycle4.save();
 // var me = new User({name: 'Jake'})
 // me.motorcycles.push(mcycle);
 // me.save();
