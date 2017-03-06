@@ -1,0 +1,19 @@
+<ul>
+      <li ui-sref-active="selected" ng-repeat="motorcycle in motorcycles">
+          <a ui-sref="detail({id: motorcycle._id})">{{motorcycle.make}}</a>
+      </li>
+  </ul>
+
+<!-- <section ng-controller="MotorcyclesController as imoto">
+    <nav>
+      <ul id="motoList">
+        <li class="motoItem" ui-sref-active="selected" ng-repeat="motorcycle in imoto.all" data-id="{{motorcycle._id}}">
+          <a ui-sref="motorcycles.detail({id: motorcycle.id})"><strong>{{motorcycle.make}} {{motorcycle.model}}</strong></a>
+        </li>
+      </ul>
+    </nav>
+    <main ui-view>
+
+    </main>
+    </section> -->
+<div class="detail" ui-view></div>

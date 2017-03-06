@@ -6,3 +6,26 @@ body {
 header {
   text-align: center;
 }
+
+nav a {
+  color: inherit;
+}
+
+nav a:hover {
+  text-decoration: none;
+}
+
+#motoList {
+  list-style: none;
+  text-align: center;
+  background-color: #ff6600;
+}
+
+.motoItem {
+  display: inline-block;
+  padding: 1% 1.2%;
+}
+
+.motoItem:hover {
+  background-color: #eaeaea;
+}
