@@ -1,11 +1,10 @@
 angular.module('iMotoApp')
   .factory('MotorcyclesService', ['$http', function($http){
-    var motorcycles = [];
+    var motorcycles = [{_id: 1, make: 'yama', year: 2009}];
     $http
       .get('http://127.0.0.1:3000/motorcycles')
       .then(function(response) {
         motorcycles = response.data.motorcycles
-        console.log(motorcycles)
       })
 
     return {
