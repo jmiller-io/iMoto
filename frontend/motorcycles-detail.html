@@ -3,11 +3,11 @@
 
   {{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}}<br>
   <ul class="inlineList">
-    <li>Mileage: 23,000</li>
-    <li>Purchase Price: $4,800</li>
+    <li>Mileage: {{selectedMotorcycle.mileage | number}}</li>
+    <li>Purchase Price: {{selectedMotorcycle.purchasePrice | currency}}</li>
     <li>Purchase Date: Nov. 1st, 2009</li>
-    <li>VIN: 1234567890</li>
-    <li>License Plate #: 118JOT</li>
+    <li>VIN: {{selectedMotorcycle.vin}}</li>
+    <li>License Plate #: {{selectedMotorcycle.licensePlate}}</li>
   </ul>
   <ul class="inlineList">
     <li>Insurance Company: State Farm</li>

@@ -6,14 +6,22 @@ var Motorcycle = require('../models/motorcycle.js');
 var mcycle = new Motorcycle({
   year: 2009,
   make: 'Yamaha',
-  model: 'FZ6'
+  model: 'FZ6',
+  mileage: 23450,
+  vin: '1J309CJ3BB3J',
+  purchasePrice: 4800,
+  licensePlate: '22U940'
 })
 mcycle.save();
 
 var mcycle2 = new Motorcycle({
   year: 2017,
   make: 'Honda',
-  model: 'CRF250L Rally'
+  model: 'CRF250L Rally',
+  mileage: 57000,
+  vin: '3LF4F20VI48G',
+  purchasePrice: 5000,
+  licensePlate: 'FASTR'
 })
 mcycle2.save();
 
@@ -21,14 +29,22 @@ mcycle2.save();
 var mcycle3 = new Motorcycle({
   year: 2016,
   make: 'Yamaha',
-  model: 'FZ09'
+  model: 'FZ09',
+  mileage: 1500,
+  vin: '39CJH3HFJ2KDO2',
+  purchasePrice: 7200,
+  licensePlate: 'MYAMMY'
 })
 mcycle3.save();
 
 var mcycle4 = new Motorcycle({
   year: 2016,
   make: 'Ducati',
-  model: 'Scrambler'
+  model: 'Scrambler',
+  mileage: 3570,
+  vin: '28FH20VJ2JFH29J',
+  purchasePrice: 8500,
+  licensePlate: '44EJWP'
 })
 mcycle4.save();
 // var me = new User({name: 'Jake'})
