@@ -34,7 +34,8 @@
 angular.module('iMotoApp')
   .controller('MotorcyclesDropDownController', MotorcyclesDropDownController)
 
-  function MotorcyclesDropDownController($scope, MotorcyclesService) {
+
+  function MotorcyclesDropDownController($scope, MotorcyclesService, $http) {
     var vm = this;
     vm.motorcycles = [];
     vm.newMotorcycle = {};
@@ -47,21 +48,9 @@ angular.module('iMotoApp')
       })
     };
     vm.getMotorcycles();
-
-
-    function addMotorcycle() {
-      $http
-        .post('http://127.0.0.1:3000/motorcycles', vm.newMotorcycle)
-        .then(function(response) {
-          vm.getMotorcycles();
-        })
-      vm.newMotorcycle = {};
-    }
-
-
-
-
   }
+
+  // MotorcyclesDropDownController.$inject = ['$http']
 
 
 

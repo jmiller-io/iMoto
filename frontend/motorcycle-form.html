@@ -1,8 +1,8 @@
-<section ng-controller="MotorcyclesDropDownController as motorcycles">
-  <form ng-submit="motorcycles.addMotorcycle()">
-    <label>Year: <input type="Number" name="year" ng-model="motorcycle.year"></label>
-    <label>Make: <input type="string" name="make" ng-model="motorcycle.make"></label>
-    <label>Model: <input type="string" name="model" ng-model="motorcycle.model"></label>
+<section ng-controller="MotorcyclesFormController as motorcycle">
+  <form ng-submit="motorcycle.addMotorcycle()">
+    <label>Year: <input type="Number" name="year" ng-model="motorcycle.newMotorcycle.year"></label>
+    <label>Make: <input type="string" name="make" ng-model="motorcycle.newMotorcycle.make"></label>
+    <label>Model: <input type="string" name="model" ng-model="motorcycle.newMotorcycle.model"></label>
     <input type="submit" value="Save">
   </form>
   <pre>motorcycle = {{motorcycle | json}}</pre>
