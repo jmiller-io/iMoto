@@ -39,7 +39,7 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="moto in view.motorcycles"><a ui-sref="motorcycle" ng-click='navCollapsed=true'>{{moto.make}} {{moto.model}}</a></li>
+                <li ng-repeat="moto in view.motorcycles" ui-sref-active="selected"><a ui-sref="detail({id: moto._id})" ng-click='navCollapsed=true'>{{moto.make}} {{moto.model}}</a></li>
                 <li><a ui-sref="motorcycle-form" ng-click='navCollapsed = true'>Add Motorcycle</a></li>
               </ul>
             </li>
@@ -64,6 +64,6 @@
     <script src="js/service.js"></script>
     <script src="js/controllers/motorcyclesDropDownController.js"></script>
     <script src="js/controllers/motorcyclesFormController.js"></script>
-    <!-- <script src="js/controllers/motorcyclesDetailController.js"></script> -->
+    <script src="js/controllers/motorcyclesDetailController.js"></script>
   </body>
 </html>

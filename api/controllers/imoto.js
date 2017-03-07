@@ -10,8 +10,6 @@ function getMotorcycles(request, response) {
 
 function createMotorcycle(request, response) {
   var moto = new Motorcycle(request.body);
-  console.log('hi from createmoto')
-  console.log(request.body)
   moto.save()
 }
 

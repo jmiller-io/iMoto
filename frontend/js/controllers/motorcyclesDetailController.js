@@ -3,5 +3,5 @@ angular.module('iMotoApp')
 
   MotorcyclesDetailController.$inject = ['$scope', '$stateParams', 'MotorcyclesService'];
   function MotorcyclesDetailController($scope, $stateParams, MotorcyclesService) {
-    $scope.selectedMotorcycle = MotorcyclesService.find($stateParams.id)
+    $scope.selectedMotorcycle = MotorcyclesService.findMotorcycles($stateParams.id)
   }

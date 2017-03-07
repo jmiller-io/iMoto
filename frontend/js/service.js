@@ -2,7 +2,8 @@ angular.module('iMotoApp')
   .factory('MotorcyclesService', ['$http', function MotorcyclesService($http) {
     var service = {
       motorcycles: [],
-      getMotorcycles: getMotorcycles
+      getMotorcycles: getMotorcycles,
+      findMotorcycles: findMotorcycles
     }
     return service;
 
@@ -11,6 +12,12 @@ angular.module('iMotoApp')
         .success(function (response) {
           service.motorcycles = response.motorcycles
         })
+    }
+
+    function findMotorcycles(id) {
+      return _.find(service.motorcycles, function(motorcycle) {
+        return motorcycle._id == id
+      })
     }
   }])
  //  .factory('MotorcyclesService', ['$http', function($http){

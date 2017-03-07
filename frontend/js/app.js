@@ -23,6 +23,6 @@
           templateUrl: 'motorcycles-detail.html',
           controller: 'MotorcyclesDetailController'
         });
-      $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/home');
     }
 })();
