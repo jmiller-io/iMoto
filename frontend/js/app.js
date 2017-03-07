@@ -14,6 +14,10 @@
         .state('home', {
           url: '/home'
         })
+        .state('closet', {
+          url: '/closet',
+          templateUrl: '/templates/closet.html'
+        })
         .state('motorcycle-form', {
           url: '/motorcycle-form',
           templateUrl: 'motorcycle-form.html',
