@@ -5,6 +5,8 @@ var MotorcycleSchema = new mongoose.Schema({
   make: String,
   model: String,
   mileage: Number,
+  vin: String,
+  licensePlate: String,
   serviceRecords: [],
   parts: []
 });

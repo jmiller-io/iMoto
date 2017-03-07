@@ -9,12 +9,10 @@ function getMotorcycles(request, response) {
 }
 
 function createMotorcycle(request, response) {
-  var motorcycle = new Motorcycle(request.body);
-  Motorcycle.save()(function(error) {
-    if (error) response.json({message: 'Could not create motorcycle b/c:' + error});
-
-    response.json({motorcycle: motorcycle});
-  })
+  var moto = new Motorcycle(request.body);
+  console.log('hi from createmoto')
+  console.log(request.body)
+  moto.save()
 }
 
 function getMotorcycle(request, response) {

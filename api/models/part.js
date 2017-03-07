@@ -5,6 +5,7 @@ var PartSchema = new mongoose.Schema({
   cost: Number,
   manufacturer: String,
   partNumber: String,
+  installDate: Date
 })
 
 const Part = mongoose.model('Part', PartSchema);

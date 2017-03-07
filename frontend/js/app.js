@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('iMotoApp', ['ui.router'])
+  angular.module('iMotoApp', ['ui.router', 'ui.bootstrap'])
     .config(MainRouter)
 
     MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -10,6 +10,13 @@
           url: '/motorcycles',
           templateUrl: 'motorcycles.html',
           controller: 'MotorcyclesController'
+        })
+        .state('home', {
+          url: '/home'
+        })
+        .state('motorcycle-form', {
+          url: '/motorcycle-form',
+          templateUrl: 'motorcycle-form.html',
         })
         .state('detail', {
           url: '/detail/:id',
