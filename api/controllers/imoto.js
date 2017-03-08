@@ -23,8 +23,18 @@ function getMotorcycle(request, response) {
   })
 }
 
+function deleteMotorcycle(request, response) {
+  var id = request.params.id;
+  Motorcycle.remove({_id: id}, function(error) {
+    if (error) response.json({message: 'Could not delete motorcycle b/c:' + error})
+
+    response.json({message: 'Motorcycle successfully deleted'})
+  })
+}
+
 module.exports = {
   getMotorcycles: getMotorcycles,
   createMotorcycle: createMotorcycle,
-  getMotorcycle: getMotorcycle
+  getMotorcycle: getMotorcycle,
+  deleteMotorcycle: deleteMotorcycle
 }

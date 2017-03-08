@@ -3,7 +3,8 @@ angular.module('iMotoApp')
     var service = {
       motorcycles: [],
       getMotorcycles: getMotorcycles,
-      findMotorcycles: findMotorcycles
+      findMotorcycles: findMotorcycles,
+      deleteMotorcycles: deleteMotorcycles
     }
     return service;
 
@@ -19,6 +20,17 @@ angular.module('iMotoApp')
         return motorcycle._id == id
       })
     }
+
+    function deleteMotorcycles(motorcycle) {
+      $http
+        .delete('http://localhost:3000/motorcycles/' + motorcycle._id)
+        .then(function(response) {
+          let index = service.motorcycles.indexOf(motorcycle);
+          service.motorcycles.splice(index, 1)
+        });
+    }
+
+
   }])
  //  .factory('MotorcyclesService', ['$http', function($http){
  //    var motorcycles = [{_id: 1, make: 'yama', year: 2009}];

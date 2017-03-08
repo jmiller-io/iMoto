@@ -20,6 +20,9 @@ router.route('/motorcycles/:id')
   // GET specific motorcycle
   .get(imotoController.getMotorcycle)
 
+  // DELETE specific motorcycle
+  .delete(imotoController.deleteMotorcycle)
+
 
 
 module.exports = router;
