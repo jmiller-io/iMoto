@@ -1,19 +1,23 @@
-<section id="motorcycleInfo">
-  <h4>Bike Info</h4>
-
-  {{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}}<br>
-  <ul class="inlineList">
-    <li>Mileage: {{selectedMotorcycle.mileage | number}}</li>
-    <li>Purchase Price: {{selectedMotorcycle.purchasePrice | currency}}</li>
-    <li>Purchase Date: Nov. 1st, 2009</li>
-    <li>VIN: {{selectedMotorcycle.vin}}</li>
-    <li>License Plate #: {{selectedMotorcycle.licensePlate}}</li>
-  </ul>
-  <ul class="inlineList">
-    <li>Insurance Company: State Farm</li>
-    <li>Insurance Phone: (555) 555-1234</li>
-    <li>Policy Number: 1234qwefj</li>
-  </ul>
+<section id="motorcycleInfoWrapper">
+  <div id="motorcycleInfo">
+    <h4>Bike Info</h4>
+    <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong><br>
+    <ul class="inlineList">
+      <li>Mileage: <span class="values">{{selectedMotorcycle.mileage | number}}</span></li>
+      <li>Purchase Price: <span class="values">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
+      <!-- <li>Purchase Date: <span class="values">Nov. 1st, 2009</span></li> -->
+      <li>VIN: <span class="values">{{selectedMotorcycle.vin}}</span></li>
+      <li>License Plate #: <span class="values">{{selectedMotorcycle.licensePlate}}</span></li>
+    </ul>
+    <!-- <ul class="inlineList">
+      <li>Insurance Company: State Farm</li>
+      <li>Insurance Phone: (555) 555-1234</li>
+      <li>Policy Number: 1234qwefj</li>
+    </ul> -->
+  </div>
+  <div id="bike_img">
+    <img class="img_responsive" src="http://image3.mouthshut.com/images/ImagesR/2016/7/Ktm-Duke-200-925642644-7488606-2.jpg">
+  </div>
 </section>
 <section id="ServiceRecords">
   <h4>Service Records</h4>
@@ -34,6 +38,6 @@
     <li>Brakes</li>
   </ul>
 </section>
-  <!-- <img src="http://image3.mouthshut.com/images/ImagesR/2016/7/Ktm-Duke-200-925642644-7488606-2.jpg"> -->
+
 
 

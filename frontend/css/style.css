@@ -1,0 +1,15 @@
+#motorcycleInfo {
+  display: inline-block;
+  border: 1px solid red;
+}
+
+#bike_img {
+  display: inline-block;
+  border: 1px solid blue;
+  float: right;
+}
+
+#motorcycleInfoWrapper {
+  border: 1px solid green;
+  height: 18em;
+}
