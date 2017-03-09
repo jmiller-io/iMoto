@@ -1,4 +1,5 @@
 var Motorcycle = require('../models/motorcycle.js');
+var RidingGear = require('../models/ridinggear.js');
 
 function getMotorcycles(request, response) {
   Motorcycle.find(function(error, motorcycles) {
@@ -38,10 +39,20 @@ function deleteMotorcycle(request, response) {
   })
 }
 
+
+function getGear(request, response) {
+  RidingGear.find(function(error, gear) {
+    if (error) response.json({message: 'Could not find any gear'})
+
+    response.json({gear: gear})
+  })
+}
+
 module.exports = {
   getMotorcycles: getMotorcycles,
   createMotorcycle: createMotorcycle,
   getMotorcycle: getMotorcycle,
   deleteMotorcycle: deleteMotorcycle,
-  editMotorcycle: editMotorcycle
-}
+  editMotorcycle: editMotorcycle,
+  getGear: getGear
+};

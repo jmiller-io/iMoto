@@ -25,4 +25,9 @@ router.route('/motorcycles/:id')
 
   .put(imotoController.editMotorcycle)
 
+
+router.route('/gear')
+  // GET all gear
+  .get(imotoController.getGear)
+
 module.exports = router;

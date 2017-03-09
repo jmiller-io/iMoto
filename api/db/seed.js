@@ -51,3 +51,20 @@ mcycle4.save();
 // var me = new User({name: 'Jake'})
 // me.motorcycles.push(mcycle);
 // me.save();
+
+var gear1 = new RidingGear({
+  brand: 'Alpinestars',
+  model: 'Viper Air',
+  price: 149.99
+})
+
+gear1.save()
+
+
+var gear2 = new RidingGear({
+  brand: 'HJC',
+  model: 'CL-17 Redline Hi-Viz Helmet',
+  price: 104
+})
+
+gear2.save()

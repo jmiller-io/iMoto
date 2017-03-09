@@ -1,4 +1,4 @@
-<section>
+<section ng-controller="RidingGearController as view">
   <h4>Your Gear</h4>
   <form>
     <label for="brand">Brand:</label>
@@ -10,6 +10,6 @@
     <input type="submit" value="Add Item">
   </form>
   <ul>
-
+  <li ng-repeat="item in view.allGear">{{item.brand}} {{item.model}} {{item.price}}</li>
   </ul>
 </section>

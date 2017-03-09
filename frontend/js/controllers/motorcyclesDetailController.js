@@ -6,6 +6,7 @@ angular.module('iMotoApp')
   function MotorcyclesDetailController($scope, $stateParams, MotorcyclesService) {
     var vm = this;
     vm.editMotorcycle = {};
+
     vm.deleteMotorcycles = function(motorcycle) {
       MotorcyclesService.deleteMotorcycles(motorcycle)
     }
