@@ -24,7 +24,7 @@ function getMotorcycle(request, response) {
 }
 
 function editMotorcycle(request, response) {
-  var id request.params.id;
+  var id = request.params.id;
 
   response.send(request.body)
 }

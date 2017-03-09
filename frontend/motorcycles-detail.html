@@ -3,11 +3,11 @@
     <h4>Bike Info</h4>
     <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong><button class="delete" ng-click="view.deleteMotorcycles(selectedMotorcycle)">X</button><br>
     <ul class="inlineList">
-      <li>Mileage: <span class="values">{{selectedMotorcycle.mileage | number}}</span></li>
-      <li>Purchase Price: <span class="values">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
+      <li>Mileage: <span class="values" contenteditable="true">{{selectedMotorcycle.mileage | number}}</span></li>
+      <li>Purchase Price: <span class="values" contenteditable="true">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
       <!-- <li>Purchase Date: <span class="values">Nov. 1st, 2009</span></li> -->
-      <li>VIN: <span class="values">{{selectedMotorcycle.vin}}</span></li>
-      <li>License Plate #: <span class="values">{{selectedMotorcycle.licensePlate}}</span></li>
+      <li>VIN: <span class="values" contenteditable="true">{{selectedMotorcycle.vin}}</span></li>
+      <li>License Plate #: <span class="values" contenteditable="true">{{selectedMotorcycle.licensePlate}}</span></li>
     </ul>
     <!-- <ul class="inlineList">
       <li>Insurance Company: State Farm</li>

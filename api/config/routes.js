@@ -23,6 +23,6 @@ router.route('/motorcycles/:id')
   // DELETE specific motorcycle
   .delete(imotoController.deleteMotorcycle)
 
-  .put(imotorController.editMotorcycle)
+  .put(imotoController.editMotorcycle)
 
 module.exports = router;
