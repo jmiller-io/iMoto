@@ -23,6 +23,12 @@ function getMotorcycle(request, response) {
   })
 }
 
+function editMotorcycle(request, response) {
+  var id request.params.id;
+
+  response.send(request.body)
+}
+
 function deleteMotorcycle(request, response) {
   var id = request.params.id;
   Motorcycle.remove({_id: id}, function(error) {
@@ -36,5 +42,6 @@ module.exports = {
   getMotorcycles: getMotorcycles,
   createMotorcycle: createMotorcycle,
   getMotorcycle: getMotorcycle,
-  deleteMotorcycle: deleteMotorcycle
+  deleteMotorcycle: deleteMotorcycle,
+  editMotorcycle: editMotorcycle
 }
