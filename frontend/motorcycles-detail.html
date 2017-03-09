@@ -3,12 +3,14 @@
     <h4>Bike Info</h4>
     <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong><button class="delete" ng-click="view.deleteMotorcycles(selectedMotorcycle)">X</button><br>
     <ul class="inlineList">
-      <li>Mileage: <span class="values" contenteditable="true">{{selectedMotorcycle.mileage | number}}</span></li>
-      <li>Purchase Price: <span class="values" contenteditable="true">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
+      <li>Mileage: </li>
+      <li>Purchase Price: <span class="values" contenteditable="false">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
       <!-- <li>Purchase Date: <span class="values">Nov. 1st, 2009</span></li> -->
       <li>VIN: <span class="values" contenteditable="true">{{selectedMotorcycle.vin}}</span></li>
       <li>License Plate #: <span class="values" contenteditable="true">{{selectedMotorcycle.licensePlate}}</span></li>
     </ul>
+    <p>Mileage: <input class="test" name="mileage" readonly ng-model="view.editMotorcycle.mileage"></p>
+    <pre>edit = {{view | json}}</pre>
     <!-- <ul class="inlineList">
       <li>Insurance Company: State Farm</li>
       <li>Insurance Phone: (555) 555-1234</li>

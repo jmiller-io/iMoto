@@ -3,7 +3,7 @@ angular.module('iMotoApp')
 
   MotorcyclesFormController.$inject = ['$http']
 
-  function MotorcyclesFormController($http, MotorcyclesService) {
+  function MotorcyclesFormController($http) {
     var vm = this;
     vm.newMotorcycle = {};
     vm.addMotorcycle = addMotorcycle;
@@ -13,7 +13,6 @@ angular.module('iMotoApp')
       $http
         .post('http://127.0.0.1:3000/motorcycles', vm.newMotorcycle)
         .then(function(response) {
-          Motorcycles.getMotorcycles();
         })
       vm.newMotorcycle = {};
     }

@@ -2,6 +2,7 @@ require('./config')
 // Require models
 // var User = require('../models/user.js');
 var Motorcycle = require('../models/motorcycle.js');
+var RidingGear = require('../models/ridinggear.js');
 
 var mcycle = new Motorcycle({
   year: 2009,
