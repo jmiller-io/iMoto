@@ -1,15 +1,15 @@
 <section ng-controller="RidingGearController as view">
   <h4>Your Gear</h4>
-  <form>
+  <form ng-submit="view.addGear()">
     <label for="brand">Brand:</label>
-    <input type="text" name="brand">
+    <input type="text" name="brand" ng-model="view.gear.brand">
     <label for="model">Product Model:</label>
-    <input type="text" name="model">
+    <input type="text" name="model" ng-model="view.gear.model">
     <label for="price">Price Paid:</label>
-    <input type="number" name="price">
+    <input type="number" name="price" ng-model="view.gear.price">
     <input type="submit" value="Add Item">
   </form>
   <ul>
-  <li ng-repeat="item in view.allGear">{{item.brand}} {{item.model}} {{item.price}}</li>
+  <li ng-repeat="item in view.allGear">{{item.brand}} {{item.model}} {{item.price | currency}}</li>
   </ul>
 </section>

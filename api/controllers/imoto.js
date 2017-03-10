@@ -48,11 +48,20 @@ function getGear(request, response) {
   })
 }
 
+function createGear(request, response) {
+  var gear = new RidingGear(request.body)
+  gear.save(function(error) {
+    if (error) response.json({message: 'Could not create gear b/c: ' + error})
+      response.json({gear: gear})
+  })
+}
+
 module.exports = {
   getMotorcycles: getMotorcycles,
   createMotorcycle: createMotorcycle,
   getMotorcycle: getMotorcycle,
   deleteMotorcycle: deleteMotorcycle,
   editMotorcycle: editMotorcycle,
-  getGear: getGear
+  getGear: getGear,
+  createGear: createGear
 };

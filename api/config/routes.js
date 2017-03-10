@@ -30,4 +30,7 @@ router.route('/gear')
   // GET all gear
   .get(imotoController.getGear)
 
+  // POST a new gear
+  .post(imotoController.createGear)
+
 module.exports = router;

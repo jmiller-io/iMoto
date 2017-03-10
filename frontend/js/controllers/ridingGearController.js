@@ -5,8 +5,10 @@ angular.module('iMotoApp')
 
   function RidingGearController($http) {
     var vm = this;
-    vm.allGear = []
-    vm.getAllGear = getAllGear
+    vm.allGear = [];
+    vm.gear = {};
+    vm.getAllGear = getAllGear;
+    vm.addGear = addGear;
 
     getAllGear()
     function getAllGear() {
@@ -16,6 +18,16 @@ angular.module('iMotoApp')
           console.log(response.gear)
           vm.allGear = response.gear
         })
+    }
+
+    function addGear() {
+      console.log(vm.gear)
+      $http
+        .post('http://localhost:3000/gear', vm.gear)
+        .then(function(response) {
+          getAllGear()
+        })
+        vm.gear = {};
     }
 
   }
