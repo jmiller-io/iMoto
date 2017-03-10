@@ -56,6 +56,14 @@ function createGear(request, response) {
   })
 }
 
+function removeGear(request, response) {
+  let id = request.params.id
+  RidingGear.remove({_id: id}, function(error) {
+    if (error) response.json({message: 'Could not delete gear b/c:' + error})
+  })
+  response.json({message: 'Riding Gear successfully deleted'})
+}
+
 module.exports = {
   getMotorcycles: getMotorcycles,
   createMotorcycle: createMotorcycle,
@@ -63,5 +71,6 @@ module.exports = {
   deleteMotorcycle: deleteMotorcycle,
   editMotorcycle: editMotorcycle,
   getGear: getGear,
-  createGear: createGear
+  createGear: createGear,
+  removeGear: removeGear
 };

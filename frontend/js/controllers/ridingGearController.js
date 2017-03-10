@@ -9,6 +9,7 @@ angular.module('iMotoApp')
     vm.gear = {};
     vm.getAllGear = getAllGear;
     vm.addGear = addGear;
+    vm.removeGear = removeGear
 
     getAllGear()
     function getAllGear() {
@@ -28,6 +29,15 @@ angular.module('iMotoApp')
           getAllGear()
         })
         vm.gear = {};
+    }
+
+    function removeGear(item) {
+      $http
+        .delete('http://localhost:3000/gear/' + item._id)
+        .then(function(response) {
+          let index = vm.allGear.indexOf(item);
+          vm.allGear.splice(index, 1);
+        })
     }
 
   }

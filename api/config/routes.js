@@ -33,4 +33,8 @@ router.route('/gear')
   // POST a new gear
   .post(imotoController.createGear)
 
+router.route('/gear/:id')
+  // DELETE a piece of Gear
+  .delete(imotoController.removeGear)
+
 module.exports = router;
