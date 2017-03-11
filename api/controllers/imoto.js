@@ -60,8 +60,16 @@ function removeGear(request, response) {
   let id = request.params.id
   RidingGear.remove({_id: id}, function(error) {
     if (error) response.json({message: 'Could not delete gear b/c:' + error})
+    response.json({message: 'Riding Gear successfully deleted'})
   })
-  response.json({message: 'Riding Gear successfully deleted'})
+}
+
+function updateGear(request, response) {
+  console.log(request.body)
+  RidingGear.update({_id: request.params.id}, {$set: request.body}, function(error) {
+    if (error) response.json({message: 'Could not update gear b/c:' + error})
+    response.json({message: 'Riding Gear successfully updated'})
+  })
 }
 
 module.exports = {
@@ -72,5 +80,6 @@ module.exports = {
   editMotorcycle: editMotorcycle,
   getGear: getGear,
   createGear: createGear,
-  removeGear: removeGear
+  removeGear: removeGear,
+  updateGear: updateGear
 };

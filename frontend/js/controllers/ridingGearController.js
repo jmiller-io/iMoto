@@ -1,15 +1,20 @@
 angular.module('iMotoApp')
   .controller('RidingGearController', RidingGearController)
 
-  RidingGearController.$inject = ['$http'];
+  RidingGearController.$inject = ['$http','$state'];
 
-  function RidingGearController($http) {
+  function RidingGearController($http, $state) {
     var vm = this;
     vm.allGear = [];
     vm.gear = {};
     vm.getAllGear = getAllGear;
     vm.addGear = addGear;
-    vm.removeGear = removeGear
+    vm.removeGear = removeGear;
+    vm.getTemplate = getTemplate;
+    vm.editItem = editItem;
+    vm.selected = {};
+    vm.reset = reset;
+    vm.updateItem = updateItem;
 
     getAllGear()
     function getAllGear() {
@@ -39,5 +44,40 @@ angular.module('iMotoApp')
           vm.allGear.splice(index, 1);
         })
     }
+
+    function getTemplate(item) {
+      console.log('get template checking...')
+      if(item._id === vm.selected._id) {
+        return 'edit';
+      }
+      else return 'display';
+    }
+
+    function editItem(item) {
+      vm.selected = angular.copy(item)
+      console.log(vm.selected.brand)
+    }
+
+    function reset() {
+      vm.selected = {};
+    }
+
+    function updateItem(item) {
+      console.log('updating this item')
+      let updatedGear = {
+          brand: vm.selected.brand,
+          model: vm.selected.model,
+          price: vm.selected.price,
+          category: vm.selected.category
+      }
+      console.log(updatedGear)
+      $http
+        .put('http://localhost:3000/gear/' + vm.selected._id, updatedGear)
+        .then(function(response) {
+          console.log($state)
+          $state.go($state.$current, null, { reload: true });
+        })
+    }
+
 
   }

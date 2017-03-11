@@ -37,4 +37,7 @@ router.route('/gear/:id')
   // DELETE a piece of Gear
   .delete(imotoController.removeGear)
 
+  // Update a Piece of Gear
+  .put(imotoController.updateGear)
+
 module.exports = router;

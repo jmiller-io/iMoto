@@ -7,11 +7,56 @@
     <input type="text" name="model" ng-model="view.gear.model">
     <label for="price">Price Paid:</label>
     <input type="number" name="price" ng-model="view.gear.price">
+    <label for="category">Category:</label>
+    <select ng-model="view.gear.category">
+      <option value="" disabled selected>Select an option</option>
+      <option value="helmet">Helmet</option>
+      <option value="jacket">Jacket</option>
+      <option value="pants">Pants</option>
+      <option value="boots">Boots</option>
+      <option value="other">Other</option>
+    </select>
     <input type="submit" value="Add Item">
   </form>
-  <ul>
-  <li ng-repeat="item in view.allGear">{{item.brand}} {{item.model}} {{item.price | currency}}
-    <button class="delete" ng-click="view.removeGear(item)">X</button>
-  </li>
-  </ul>
+  <!-- <ul>
+    <li ng-repeat="item in view.allGear">{{item.brand}} {{item.model}} {{item.price | currency}}
+      <button class="delete" ng-click="view.removeGear(item)">X</button>
+    </li>
+  </ul> -->
+  <table>
+    <tr><th>Brand</th><th>Model</th><th>Price Paid</th><th>Category</th><th>Edit</th></tr>
+      <script type="text/ng-template" id='display'>
+        <td>{{item.brand}}</td>
+        <td>{{item.model}}</td>
+        <td>{{item.price | currency}}</td>
+        <td>{{item.category}}</td>
+        <td>
+          <button class="btn btn-primary" ng-click="view.editItem(item)">Edit</button>
+          <button class="bnt btn-danger" ng-click="view.removeGear(item)">X</button>
+        </td>
+      </script>
+      <script type="text/ng-template" id='edit'>
+        <td><input type="text" ng-model="view.selected.brand" value="view.selected.brand"></td>
+        <td><input type="text" ng-model="view.selected.model" value="view.selected.model"></td>
+        <td><input type="currency" ng-model="view.selected.price" value="view.selected.price"></td>
+        <td>
+          <select ng-model="view.selected.category">
+            <option value="" disabled selected>Select an option</option>
+            <option value="helmet">Helmet</option>
+            <option value="jacket">Jacket</option>
+            <option value="pants">Pants</option>
+            <option value="boots">Boots</option>
+            <option value="other">Other</option>
+          </select>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary" ng-click="view.updateItem(item)">Save</button>
+          <button type="button" class="btn btn-danger" ng-click="view.reset()">Cancel</button>
+        </td>
+      </script>
+    <tr ng-repeat="item in view.allGear" ng-include="view.getTemplate(item)">
+    </tr>
+
+      </script>
+  </table>
 </section>
