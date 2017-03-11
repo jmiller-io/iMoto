@@ -21,7 +21,6 @@ angular.module('iMotoApp')
       $http
         .get('http://localhost:3000/gear')
         .success(function(response) {
-          console.log(response.gear)
           vm.allGear = response.gear
         })
     }
@@ -46,7 +45,6 @@ angular.module('iMotoApp')
     }
 
     function getTemplate(item) {
-      console.log('get template checking...')
       if(item._id === vm.selected._id) {
         return 'edit';
       }
@@ -55,7 +53,6 @@ angular.module('iMotoApp')
 
     function editItem(item) {
       vm.selected = angular.copy(item)
-      console.log(vm.selected.brand)
     }
 
     function reset() {
@@ -70,11 +67,9 @@ angular.module('iMotoApp')
           price: vm.selected.price,
           category: vm.selected.category
       }
-      console.log(updatedGear)
       $http
         .put('http://localhost:3000/gear/' + vm.selected._id, updatedGear)
         .then(function(response) {
-          console.log($state)
           $state.go($state.$current, null, { reload: true });
         })
     }

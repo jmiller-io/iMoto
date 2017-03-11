@@ -44,13 +44,10 @@ angular.module('iMotoApp')
       MotorcyclesService.getMotorcycles()
       .success(function (response) {
         vm.motorcycles = response.motorcycles
-        console.log('motorcycles returned to controller.', vm.motorcycles);
       })
     };
     vm.getMotorcycles();
   }
-
-  // MotorcyclesDropDownController.$inject = ['$http']
 
 
 

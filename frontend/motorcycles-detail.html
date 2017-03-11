@@ -1,7 +1,7 @@
 <section id="motorcycleInfoWrapper" ng-controller="MotorcyclesDetailController as view">
   <div id="motorcycleInfo">
     <h4>Bike Info</h4>
-    <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong><button class="delete" ng-click="view.deleteMotorcycles(selectedMotorcycle)">X</button><br>
+    <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong><button class="btn btn-danger" ng-click="view.deleteMotorcycles(selectedMotorcycle)">X</button><br>
     <ul class="inlineList">
       <li>Mileage: </li>
       <li>Purchase Price: <span class="values" contenteditable="false">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
