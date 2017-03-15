@@ -1,45 +1,4 @@
 <section id="motorcycleInfoWrapper" ng-controller="MotorcyclesDetailController as view">
-  <!-- <div id="motorcycleInfo">
-    <h4>Bike Info</h4>
-    <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong><button class="btn btn-danger" ng-click="view.deleteMotorcycles(selectedMotorcycle)">X</button><br>
-    <ul class="inlineList">
-      <li>Mileage: </li>
-      <li>Purchase Price: <span class="values" contenteditable="false">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
-      <li>Purchase Date: <span class="values">Nov. 1st, 2009</span></li>
-      <li>VIN: <span class="values" contenteditable="true">{{selectedMotorcycle.vin}}</span></li>
-      <li>License Plate #: <span class="values" contenteditable="true">{{selectedMotorcycle.licensePlate}}</span></li>
-    </ul>
-    <p>Mileage: <input class="test" name="mileage" readonly ng-model="view.editMotorcycle.mileage"></p>
-    <pre>edit = {{view | json}}</pre> -->
-    <!-- <ul class="inlineList">
-      <li>Insurance Company: State Farm</li>
-      <li>Insurance Phone: (555) 555-1234</li>
-      <li>Policy Number: 1234qwefj</li>
-    </ul> -->
- <!--  </div>
-  <div id="bike_img">
-    <img class="img_responsive" src="http://image3.mouthshut.com/images/ImagesR/2016/7/Ktm-Duke-200-925642644-7488606-2.jpg">
-  </div>
-</section>
-<section id="ServiceRecords">
-  <h4>Service Records</h4>
-  <ul>
-    <li>30,000 Mile Service</li>
-    <li>Oil Change</li>
-  </ul>
-
-</section>
-<section id="PartRecords">
-  <h4>Parts</h4>
-  <ul class="inlineList">
-    <label>Aftermarket</label>
-    <li>Exhaust</li>
-  </ul>
-   <ul class="inlineList">
-    <label>OEM</label>
-    <li>Brakes</li>
-  </ul> -->
-  <div>
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs">
@@ -53,14 +12,22 @@
   <div class="tab-content ">
     <div ng-show="tab === 1">
       <div id="motorcycleInfo">
-        <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}} </strong><button class="btn btn-danger" ng-click="view.deleteMotorcycles(selectedMotorcycle)">X</button><br>
-        <ul class="inlineList">
+        <table>
+          <tr><td><strong>{{selectedMotorcycle.year}}</strong></td><td><strong>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong></td><td><button class="btn btn-danger" ng-click="view.deleteMotorcycles(selectedMotorcycle)">X</button><br></tr>
+          <tr><td><strong>Mileage</strong></td><td>{{selectedMotorcycle.mileage | number}}</td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="view.editItem(item)"></button></td></tr>
+          <tr><td><strong>Purchase Price</strong></td><td>{{selectedMotorcycle.purchasePrice | currency}}</td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="view.editItem(item)"></button></td></tr>
+          <tr><td><strong>Purchase Date</strong></td><td>{{selectedMotorcycle.purchaseDate}}</td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="view.editItem(item)"></button></td></tr>
+          <tr><td><strong>VIN</strong></td><td>{{selectedMotorcycle.vin}}</td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="view.editItem(item)"></button></td></tr>
+          <tr><td><strong>License Plate</strong></td><td>{{selectedMotorcycle.licensePlate}}</td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="view.editItem(item)"></button></td></tr>
+        </table>
+        <!-- <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}} </strong><button class="btn btn-danger" ng-click="view.deleteMotorcycles(selectedMotorcycle)">X</button><br> -->
+        <!-- <ul class="inlineList">
           <li>Mileage: <span class="values">{{selectedMotorcycle.mileage | number}}</span></li>
           <li>Purchase Price: <span class="values">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
           <li>Purchase Date: <span class="values">Nov. 1st, 2009</span></li>
           <li>VIN: <span class="values">{{selectedMotorcycle.vin}}</span></li>
           <li>License Plate #: <span class="values">{{selectedMotorcycle.licensePlate}}</span></li>
-        </ul>
+        </ul> -->
       </div>
     </div>
     <div ng-show="tab === 2">
@@ -78,9 +45,4 @@
       Hello Parts...
     </div>
   </div>
-
-</div>
 </section>
-
-
-
