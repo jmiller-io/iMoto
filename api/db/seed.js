@@ -11,7 +11,12 @@ var mcycle = new Motorcycle({
   mileage: 23450,
   vin: '1J309CJ3BB3J',
   purchasePrice: 4800,
-  licensePlate: '22U940'
+  licensePlate: '22U940',
+  insurance: {
+    company: 'State Farm',
+    companyPhone: '(555) 555-5555',
+    policyNumber: '192-HFVA-2700'
+  },
 })
 mcycle.save();
 

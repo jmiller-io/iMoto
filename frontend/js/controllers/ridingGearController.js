@@ -1,9 +1,9 @@
 angular.module('iMotoApp')
   .controller('RidingGearController', RidingGearController)
 
-  RidingGearController.$inject = ['$http','$state'];
+  RidingGearController.$inject = ['$http','$state','$scope'];
 
-  function RidingGearController($http, $state) {
+  function RidingGearController($http, $state, $scope) {
     var vm = this;
     vm.allGear = [];
     vm.gear = {};
@@ -15,6 +15,8 @@ angular.module('iMotoApp')
     vm.selected = {};
     vm.reset = reset;
     vm.updateItem = updateItem;
+    $scope.sortType = 'brand';
+    $scope.sortReverse = false;
 
     getAllGear()
     function getAllGear() {

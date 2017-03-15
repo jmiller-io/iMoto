@@ -49,7 +49,7 @@
           <button type="button" class="btn btn-danger" ng-click="view.reset()">Cancel</button>
         </td>
       </script>
-    <tr ng-repeat="item in view.allGear" ng-include="view.getTemplate(item)">
+    <tr ng-repeat="item in view.allGear | orderBy:sortType:sortReverse" ng-include="view.getTemplate(item)">
     </tr>
 
       </script>

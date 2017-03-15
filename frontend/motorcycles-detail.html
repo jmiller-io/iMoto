@@ -66,9 +66,9 @@
     <div ng-show="tab === 2">
       <p>Hello Insurance...</p>
       <ul class="inlineList">
-        <li>Insurance Company: State Farm</li>
-        <li>Insurance Phone: (555) 555-1234</li>
-        <li>Policy Number: 1234qwefj</li>
+        <li>Policy Number: {{selectedMotorcycle.insurance.policyNumber}}</li>
+        <li>Insurance Company: {{selectedMotorcycle.insurance.company}}</li>
+        <li>Insurance Phone: {{selectedMotorcycle.insurance.companyPhone}}</li>
       </ul>
     </div>
     <div ng-show="tab === 3">
