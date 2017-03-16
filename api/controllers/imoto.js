@@ -1,5 +1,6 @@
 var Motorcycle = require('../models/motorcycle.js');
 var RidingGear = require('../models/ridinggear.js');
+const Part = require('../models/part.js');
 
 function getMotorcycles(request, response) {
   Motorcycle.find(function(error, motorcycles) {
@@ -24,18 +25,24 @@ function getMotorcycle(request, response) {
   })
 }
 
-function editMotorcycle(request, response) {
-  var id = request.params.id;
-
-  response.send(request.body)
-}
-
 function deleteMotorcycle(request, response) {
   var id = request.params.id;
   Motorcycle.remove({_id: id}, function(error) {
     if (error) response.json({message: 'Could not delete motorcycle b/c:' + error})
 
     response.json({message: 'Motorcycle successfully deleted'})
+  })
+}
+
+function createPart(request, response) {
+  var id= request.params.id;
+  var part = new Part(request.body)
+  Motorcycle.findById(request.params.id, function(error, motorcycle) {
+    motorcycle.parts.push(part)
+    motorcycle.save(function(error) {
+      if (error) response.json({message: 'Could not create part b/c: ' + error})
+        response.json({part: part})
+    })
   })
 }
 
@@ -77,7 +84,7 @@ module.exports = {
   createMotorcycle: createMotorcycle,
   getMotorcycle: getMotorcycle,
   deleteMotorcycle: deleteMotorcycle,
-  editMotorcycle: editMotorcycle,
+  createPart: createPart,
   getGear: getGear,
   createGear: createGear,
   removeGear: removeGear,

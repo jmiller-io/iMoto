@@ -23,7 +23,11 @@ router.route('/motorcycles/:id')
   // DELETE specific motorcycle
   .delete(imotoController.deleteMotorcycle)
 
-  .put(imotoController.editMotorcycle)
+
+router.route('/motorcycles/:id/part')
+
+  // POST a New Part
+  .post(imotoController.createPart)
 
 
 router.route('/gear')
