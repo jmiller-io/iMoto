@@ -46,6 +46,12 @@ function createPart(request, response) {
   })
 }
 
+function removePart(request, response) {
+  var motoid = request.params.motoid
+  var partid = request.params.partid
+ // cant get this to work moving on to something else for now
+}
+
 
 function getGear(request, response) {
   RidingGear.find(function(error, gear) {
@@ -85,6 +91,7 @@ module.exports = {
   getMotorcycle: getMotorcycle,
   deleteMotorcycle: deleteMotorcycle,
   createPart: createPart,
+  removePart: removePart,
   getGear: getGear,
   createGear: createGear,
   removeGear: removeGear,

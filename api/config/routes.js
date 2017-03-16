@@ -29,6 +29,11 @@ router.route('/motorcycles/:id/part')
   // POST a New Part
   .post(imotoController.createPart)
 
+router.route('/motorcycles/:motoid/part/:partid')
+
+  //DELETE a Part
+  .delete(imotoController.removePart)
+
 
 router.route('/gear')
   // GET all gear
