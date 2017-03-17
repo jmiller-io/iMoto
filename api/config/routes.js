@@ -31,8 +31,11 @@ router.route('/motorcycles/:id/part')
 
 router.route('/motorcycles/:motoid/part/:partid')
 
-  //DELETE a Part
-  .delete(imotoController.removePart)
+  //DELETE a Part not working
+  // .delete(imotoController.removePart)
+
+  // Update a Part
+  .put(imotoController.updatePart)
 
 
 router.route('/gear')

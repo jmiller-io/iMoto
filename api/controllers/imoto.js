@@ -1,6 +1,6 @@
+const Part = require('../models/part.js');
 var Motorcycle = require('../models/motorcycle.js');
 var RidingGear = require('../models/ridinggear.js');
-const Part = require('../models/part.js');
 
 function getMotorcycles(request, response) {
   Motorcycle.find(function(error, motorcycles) {
@@ -36,7 +36,7 @@ function deleteMotorcycle(request, response) {
 
 function createPart(request, response) {
   var id= request.params.id;
-  var part = new Part(request.body)
+  var part = new Part.Part(request.body)
   Motorcycle.findById(request.params.id, function(error, motorcycle) {
     motorcycle.parts.push(part)
     motorcycle.save(function(error) {
@@ -46,11 +46,39 @@ function createPart(request, response) {
   })
 }
 
-function removePart(request, response) {
-  var motoid = request.params.motoid
-  var partid = request.params.partid
- // cant get this to work moving on to something else for now
+function updatePart(request, response) {
+  //console.log(request.body)
+  var edits = {$set: request.body}
+  console.log(edits)
+
+  Motorcycle.findById(request.params.motoid, function(err, moto) {
+    var subDoc = moto.parts.id(request.params.partid);
+    subDoc.set(request.body)
+    moto.save().then(function(savedMoto) {
+      console.log(savedMoto)
+    })
+  })
 }
+//   Motorcycle.findOneAndUpdate({
+//     _id: request.params.motoid,
+//     "parts.id": request.params.partid
+//     },
+//     {
+//       $set: {
+//         'parts.$.part' : request.body
+//       }
+//     },
+//       function(err, moto){
+//         if(err) console.log(err)
+//         console.log(moto)
+//       });
+// }
+
+// function removePart(request, response) {
+//   var motoid = request.params.motoid
+//   var partid = request.params.partid
+//  // cant get this to work moving on to something else for now
+// }
 
 
 function getGear(request, response) {
@@ -91,7 +119,7 @@ module.exports = {
   getMotorcycle: getMotorcycle,
   deleteMotorcycle: deleteMotorcycle,
   createPart: createPart,
-  removePart: removePart,
+  updatePart: updatePart,
   getGear: getGear,
   createGear: createGear,
   removeGear: removeGear,

@@ -9,4 +9,7 @@ var PartSchema = new mongoose.Schema({
 })
 
 const Part = mongoose.model('Part', PartSchema);
-module.exports = Part;
+module.exports = {
+  Part: Part,
+  PartSchema: PartSchema
+  };
