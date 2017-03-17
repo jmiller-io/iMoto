@@ -1,15 +1,16 @@
 angular.module('iMotoApp')
   .controller('MotorcyclesDetailController', MotorcyclesDetailController)
 
-  MotorcyclesDetailController.$inject = ['$scope', '$stateParams', 'MotorcyclesService', '$http'];
+  MotorcyclesDetailController.$inject = ['$scope', '$stateParams', 'MotorcyclesService', '$http', '$state'];
 
-  function MotorcyclesDetailController($scope, $stateParams, MotorcyclesService, $http) {
+  function MotorcyclesDetailController($scope, $stateParams, MotorcyclesService, $http, $state) {
     var vm = this;
     vm.editMotorcycle = {};
     $scope.tab = 1;
     vm.addPart = addPart;
     vm.part = {};
     vm.editPart = editPart;
+    vm.updatePart = updatePart;
     vm.allParts = [];
     vm.selected = {};
     vm.getTemplate = getTemplate;
@@ -38,6 +39,23 @@ angular.module('iMotoApp')
       vm.selected = angular.copy(part)
     }
 
+    function updatePart(part) {
+      console.log('updating this part')
+      let updatedPart = {
+          manufacturer: vm.selected.manufacturer,
+          description: vm.selected.description,
+          cost: vm.selected.cost,
+          partNumber: vm.selected.partNumber,
+          installDate: vm.selected.installDate
+      }
+      $http
+        .put('http://localhost:3000/motorcycles/' + $stateParams.id + '/part/' + part._id, updatedPart)
+        .then(function(response) {
+          $state.go('home', null, { reload: true });
+          MotorcyclesService.getMotorcycles()
+        })
+    }
+
     function getTemplate(part) {
       if(part._id === vm.selected._id) {
         return 'edit';
@@ -50,7 +68,6 @@ angular.module('iMotoApp')
       $http
         .post('http://localhost:3000/motorcycles/' + $stateParams.id + '/part', vm.part)
         .then(function(response) {
-          MotorcyclesService.getMotorcycles()
           console.log(response)
         })
         vm.part = {};

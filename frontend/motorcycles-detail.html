@@ -42,7 +42,6 @@
       Hello Service Records...
     </div>
     <div ng-show="tab === 4">
-      Hello Parts...
       <form ng-submit="motorcycle.addPart()">
         <label for="manufacturer">Manufacturer:</label>
         <input type="text" name="manufacturer" ng-model="motorcycle.part.manufacturer">
@@ -61,7 +60,7 @@
           <script type="text/ng-template" id='display'>
             <td>{{part.manufacturer}}</td>
             <td>{{part.description}}</td>
-            <td>{{part.partNumber | number}}</td>
+            <td>{{part.partNumber}}</td>
             <td>{{part.cost | currency}}</td>
             <td>{{part.installDate | date}}</td>
             <td>
@@ -74,7 +73,7 @@
             <td><input type="text" ng-model="motorcycle.selected.description" value="motorcycle.selected.description"></td>
             <td><input type="text" ng-model="motorcycle.selected.partNumber" value="motorcycle.selected.partNumber"></td>
             <td><input type="text" ng-model="motorcycle.selected.cost" value="motorcycle.selected.cost"></td>
-            <td><input type="text" ng-model="motorcycle.selected.installDate" value="motorcycle.selected.installDate"></td>
+            <td><input type="date" ng-model="motorcycle.selected.installDate" value="1990-01-01"></td>
             <td>
               <button type="button" class="btn btn-success" ng-click="motorcycle.updatePart(part)">Save</button>
               <button type="button" class="btn btn-danger" ng-click="motorcycle.reset()">Cancel</button>
