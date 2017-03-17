@@ -54,31 +54,13 @@ function updatePart(request, response) {
   Motorcycle.findById(request.params.motoid, function(err, moto) {
     var subDoc = moto.parts.id(request.params.partid);
     subDoc.set(request.body)
-    moto.save().then(function(savedMoto) {
-      console.log(savedMoto)
+    moto.save(function(error) {
+      if (error) response.json({message: 'Could not create part b/c: ' + error})
+        response.json({message: 'Part created successfully'})
     })
   })
 }
-//   Motorcycle.findOneAndUpdate({
-//     _id: request.params.motoid,
-//     "parts.id": request.params.partid
-//     },
-//     {
-//       $set: {
-//         'parts.$.part' : request.body
-//       }
-//     },
-//       function(err, moto){
-//         if(err) console.log(err)
-//         console.log(moto)
-//       });
-// }
 
-// function removePart(request, response) {
-//   var motoid = request.params.motoid
-//   var partid = request.params.partid
-//  // cant get this to work moving on to something else for now
-// }
 
 
 function getGear(request, response) {
