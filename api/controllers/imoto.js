@@ -47,9 +47,6 @@ function createPart(request, response) {
 }
 
 function updatePart(request, response) {
-  //console.log(request.body)
-  var edits = {$set: request.body}
-  console.log(edits)
 
   Motorcycle.findById(request.params.motoid, function(err, moto) {
     var subDoc = moto.parts.id(request.params.partid);
@@ -61,6 +58,16 @@ function updatePart(request, response) {
   })
 }
 
+function removePart(request, response) {
+  Motorcycle.findById(request.params.motoid, function(err, moto) {
+    let part = moto.parts.id(request.params.partid)
+    part.remove(function(err) {
+      if (err) response.json({message: 'Could not remove part b/c: ' + err})
+      response.json({message: 'Part removed successfully'})
+      moto.save()
+    })
+  })
+}
 
 
 function getGear(request, response) {
@@ -102,6 +109,7 @@ module.exports = {
   deleteMotorcycle: deleteMotorcycle,
   createPart: createPart,
   updatePart: updatePart,
+  removePart: removePart,
   getGear: getGear,
   createGear: createGear,
   removeGear: removeGear,

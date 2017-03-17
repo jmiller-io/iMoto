@@ -11,7 +11,6 @@ angular.module('iMotoApp')
     vm.part = {};
     vm.editPart = editPart;
     vm.updatePart = updatePart;
-    vm.allParts = [];
     vm.selected = {};
     vm.getTemplate = getTemplate;
     vm.reset = reset
@@ -29,9 +28,8 @@ angular.module('iMotoApp')
       $http
         .delete('http://localhost:3000/motorcycles/' + $stateParams.id + '/part/' + part._id)
         .then(function(response) {
-          // let index = vm.allParts.indexOf(part);
-          // vm.allPart.splice(index, 1);
-          console.log('and then')
+          $state.go('home', null, { reload: true });
+          MotorcyclesService.getMotorcycles()
         })
     }
 
@@ -68,7 +66,8 @@ angular.module('iMotoApp')
       $http
         .post('http://localhost:3000/motorcycles/' + $stateParams.id + '/part', vm.part)
         .then(function(response) {
-          console.log(response)
+          $state.go('home', null, { reload: true });
+          MotorcyclesService.getMotorcycles()
         })
         vm.part = {};
 
