@@ -1,3 +1,4 @@
+const Part = require('../models/part.js');
 var Motorcycle = require('../models/motorcycle.js');
 var RidingGear = require('../models/ridinggear.js');
 
@@ -24,18 +25,47 @@ function getMotorcycle(request, response) {
   })
 }
 
-function editMotorcycle(request, response) {
-  var id = request.params.id;
-
-  response.send(request.body)
-}
-
 function deleteMotorcycle(request, response) {
   var id = request.params.id;
   Motorcycle.remove({_id: id}, function(error) {
     if (error) response.json({message: 'Could not delete motorcycle b/c:' + error})
 
     response.json({message: 'Motorcycle successfully deleted'})
+  })
+}
+
+function createPart(request, response) {
+  var id= request.params.id;
+  var part = new Part.Part(request.body)
+  Motorcycle.findById(request.params.id, function(error, motorcycle) {
+    motorcycle.parts.push(part)
+    motorcycle.save(function(error) {
+      if (error) response.json({message: 'Could not create part b/c: ' + error})
+        response.json({part: part})
+    })
+  })
+}
+
+function updatePart(request, response) {
+
+  Motorcycle.findById(request.params.motoid, function(err, moto) {
+    var subDoc = moto.parts.id(request.params.partid);
+    subDoc.set(request.body)
+    moto.save(function(error) {
+      if (error) response.json({message: 'Could not create part b/c: ' + error})
+        response.json({message: 'Part created successfully'})
+    })
+  })
+}
+
+function removePart(request, response) {
+  Motorcycle.findById(request.params.motoid, function(err, moto) {
+    let part = moto.parts.id(request.params.partid)
+    part.remove(function(err) {
+      if (err) response.json({message: 'Could not remove part b/c: ' + err})
+      response.json({message: 'Part removed successfully'})
+      moto.save()
+    })
   })
 }
 
@@ -77,7 +107,9 @@ module.exports = {
   createMotorcycle: createMotorcycle,
   getMotorcycle: getMotorcycle,
   deleteMotorcycle: deleteMotorcycle,
-  editMotorcycle: editMotorcycle,
+  createPart: createPart,
+  updatePart: updatePart,
+  removePart: removePart,
   getGear: getGear,
   createGear: createGear,
   removeGear: removeGear,

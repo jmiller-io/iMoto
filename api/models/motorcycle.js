@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var PartSchema = require('./part.js')
 
 var MotorcycleSchema = new mongoose.Schema({
   year: Number,
@@ -14,7 +15,7 @@ var MotorcycleSchema = new mongoose.Schema({
     policyNumber: String
   },
   serviceRecords: [],
-  parts: []
+  parts: [PartSchema.PartSchema]
 });
 
 var Motorcycle = mongoose.model('Motorcycle', MotorcycleSchema);
