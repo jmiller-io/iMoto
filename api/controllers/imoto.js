@@ -12,7 +12,10 @@ function getMotorcycles(request, response) {
 
 function createMotorcycle(request, response) {
   var moto = new Motorcycle(request.body);
-  moto.save()
+  moto.save(function(error) {
+    if (error) response.json({message: 'Could not create motorcycle b/c: ' + error})
+      response.json({message: 'Created motorcycle'})
+  })
 }
 
 function getMotorcycle(request, response) {
