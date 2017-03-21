@@ -26,7 +26,17 @@
           url: '/detail/:id',
           templateUrl: 'motorcycles-detail.html',
           controller: 'MotorcyclesDetailController'
-        });
+        })
+        .state('serviceRecords', {
+          url: '/serviceRecords/:id',
+          templateUrl: '/templates/serviceRecords.html',
+          controller: 'MotorcyclesServiceRecordsController'
+        })
+        .state('motorcycleParts', {
+          url: '/motorcycleParts/:id',
+          templateUrl: '/templates/motorcycle-parts.html',
+          controller: 'MotorcyclesPartsController'
+        })
       $urlRouterProvider.otherwise('/home');
     }
 })();

@@ -3,11 +3,14 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs">
     <li><a href ng-click="tab = 1" >Moto Info</a></li>
-    <li><a href ng-click="tab = 2">Insurance</a></li>
-    <li><a href ng-click="tab = 3">Service Records</a></li>
-    <li><a href ng-click="tab = 4">Parts</a></li>
+    <!-- <li><a href ng-click="tab = 2">Insurance</a></li> -->
+    <li><a href ui-sref="serviceRecords({id: selectedMotorcycle._id})">Service Records</a></li>
+    <li><a href ui-sref="motorcycleParts({id: selectedMotorcycle._id})">Parts</a></li>
   </ul>
 
+<div ui-view>
+
+</div>
   <!-- Tab panes -->
   <div class="tab-content ">
     <div ng-show="tab === 1">
@@ -21,6 +24,12 @@
           <tr><td><strong>License Plate</strong></td><td>{{selectedMotorcycle.licensePlate}}</td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editItem(item)"></button></td></tr>
         </table>
         <!-- <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}} </strong><button class="btn btn-danger" ng-click="motorcycle.deleteMotorcycles(selectedMotorcycle)">X</button><br> -->
+         <p>Hello Insurance...</p>
+      <ul class="inlineList">
+        <li><strong>Policy Number:</strong> {{selectedMotorcycle.insurance.policyNumber}}</li>
+        <li><strong>Insurance Company:</strong> {{selectedMotorcycle.insurance.company}}</li>
+        <li><strong>Insurance Phone:</strong> {{selectedMotorcycle.insurance.companyPhone}}</li>
+      </ul>
         <!-- <ul class="inlineList">
           <li>Mileage: <span class="values">{{selectedMotorcycle.mileage | number}}</span></li>
           <li>Purchase Price: <span class="values">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
@@ -30,16 +39,8 @@
         </ul> -->
       </div>
     </div>
-    <div ng-show="tab === 2">
-      <p>Hello Insurance...</p>
-      <ul class="inlineList">
-        <li><strong>Policy Number:</strong> {{selectedMotorcycle.insurance.policyNumber}}</li>
-        <li><strong>Insurance Company:</strong> {{selectedMotorcycle.insurance.company}}</li>
-        <li><strong>Insurance Phone:</strong> {{selectedMotorcycle.insurance.companyPhone}}</li>
-      </ul>
-    </div>
-    <div ng-show="tab === 3">
-      <form ng-submit="motorcycle.addServiceRecord()">
+    <!-- <div ng-show="tab === 3"> -->
+      <!-- <form ng-submit="motorcycle.addServiceRecord()">
         <label for="description">Description:</label>
         <input type="text" name="description" ng-model="motorcycle.serviceRecord.description">
         <label for="performedAt">Service Performed By:</label>
@@ -73,8 +74,8 @@
             </td>
           </script>
         <tr ng-repeat="serviceRecord in selectedMotorcycle.serviceRecords" ng-include="motorcycle.getServiceRecordTemplate(serviceRecord)"> {{serviceRecord.description}}</tr>
-      </table>
-    </div>
+      </table> -->
+    <!-- </div>
     <div ng-show="tab === 4">
       <form ng-submit="motorcycle.addPart()">
         <label for="manufacturer">Manufacturer:</label>
@@ -116,5 +117,5 @@
         <tr ng-repeat="part in selectedMotorcycle.parts | orderBy:sortType:sortReverse" ng-include="motorcycle.getTemplate(part)"></tr>
       </table>
     </div>
-  </div>
+  </div> -->
 </section>

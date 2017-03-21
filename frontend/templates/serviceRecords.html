@@ -1,0 +1,37 @@
+<section ng-controller="MotorcyclesServiceRecordsController as motorcycle">
+<form ng-submit="motorcycle.addServiceRecord()">
+        <label for="description">Description:</label>
+        <input type="text" name="description" ng-model="motorcycle.serviceRecord.description">
+        <label for="performedAt">Service Performed By:</label>
+        <input type="text" name="performedAt" ng-model="motorcycle.serviceRecord.performedAt">
+        <label for="cost">Cost:</label>
+        <input type="number" name="cost" ng-model="motorcycle.serviceRecord.cost">
+        <label for="date">Date Performed:</label>
+        <input type="date" name="date" ng-model="motorcycle.serviceRecord.Date">
+        <input class="btn" type="submit" value="Add Service Record">
+      </form>
+      <table>
+        <tr><th>Description</th><th>Performed By</th><th>Cost</th><th>Date Performed</th><th>Edit</th></tr>
+          <script type="text/ng-template" id='display'>
+            <td>{{serviceRecord.description}}</td>
+            <td>{{serviceRecord.performedAt}}</td>
+            <td>{{serviceRecord.cost | currency}}</td>
+            <td>{{serviceRecord.Date | date}}</td>
+            <td>
+              <button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editServiceRecord(serviceRecord)"></button>
+              <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="motorcycle.removeServiceRecord(serviceRecord)"></button>
+            </td>
+          </script>
+          <script type="text/ng-template" id='edit'>
+            <td><input type="text" ng-model="motorcycle.selectedServiceRecord.description" value="motorcycle.selectedServiceRecord.description"></td>
+            <td><input type="text" ng-model="motorcycle.selectedServiceRecord.performedAt" value="motorcycle.selectedServiceRecord.performedAt"></td>
+            <td><input type="text" ng-model="motorcycle.selectedServiceRecord.cost" value="motorcycle.selectedServiceRecord.cost"></td>
+            <td><input type="date" ng-model="motorcycle.selectedServiceRecord.Date" value="1990-01-01"></td>
+            <td>
+              <button type="button" class="btn btn-success" ng-click="motorcycle.updateServiceRecord(serviceRecord)">Save</button>
+              <button type="button" class="btn btn-danger" ng-click="motorcycle.reset()">Cancel</button>
+            </td>
+          </script>
+        <tr ng-repeat="serviceRecord in selectedMotorcycle.serviceRecords" ng-include="motorcycle.getServiceRecordTemplate(serviceRecord)"> {{serviceRecord.description}}</tr>
+      </table>
+</section>
