@@ -70,7 +70,6 @@ angular.module('iMotoApp')
     }
 
     function getServiceRecordTemplate(serviceRecord) {
-      console.log(serviceRecord.description)
       if(serviceRecord._id === vm.selectedServiceRecord._id) {
         return 'edit';
       }
@@ -78,7 +77,6 @@ angular.module('iMotoApp')
     }
 
     function addPart() {
-      console.log(vm.part)
       $http
         .post('http://localhost:3000/motorcycles/' + $stateParams.id + '/part', vm.part)
         .then(function(response) {
@@ -90,7 +88,6 @@ angular.module('iMotoApp')
     }
 
     function addServiceRecord() {
-      console.log(vm.serviceRecord)
       $http
         .post('http://localhost:3000/motorcycles/' + $stateParams.id + '/serviceRecord', vm.serviceRecord)
         .then(function(response) {

@@ -75,7 +75,7 @@
         <tr ng-repeat="serviceRecord in selectedMotorcycle.serviceRecords" ng-include="motorcycle.getServiceRecordTemplate(serviceRecord)"> {{serviceRecord.description}}</tr>
       </table>
     </div>
-    <!-- <div ng-show="tab === 4">
+    <div ng-show="tab === 4">
       <form ng-submit="motorcycle.addPart()">
         <label for="manufacturer">Manufacturer:</label>
         <input type="text" name="manufacturer" ng-model="motorcycle.part.manufacturer">
@@ -115,6 +115,6 @@
           </script>
         <tr ng-repeat="part in selectedMotorcycle.parts | orderBy:sortType:sortReverse" ng-include="motorcycle.getTemplate(part)"></tr>
       </table>
-    </div> -->
+    </div>
   </div>
 </section>
