@@ -8,11 +8,18 @@ angular.module('iMotoApp')
     vm.editMotorcycle = {};
     $scope.tab = 1;
     vm.addPart = addPart;
+    vm.addServiceRecord = addServiceRecord;
+    vm.serviceRecord = {};
+    vm.editServiceRecord = editServiceRecord;
+    vm.updateServiceRecord = updateServiceRecord;
+    vm.removeServiceRecord = removeServiceRecord;
     vm.part = {};
     vm.editPart = editPart;
     vm.updatePart = updatePart;
     vm.selected = {};
+    vm.selectedServiceRecord = {};
     vm.getTemplate = getTemplate;
+    vm.getServiceRecordTemplate = getServiceRecordTemplate;
     vm.reset = reset
     vm.removePart = removePart;
     vm.deleteMotorcycles = function(motorcycle) {
@@ -21,6 +28,7 @@ angular.module('iMotoApp')
 
     function reset() {
       vm.selected = {};
+      vm.selectedServiceRecord = {};
     }
 
     function removePart(part) {
@@ -61,6 +69,14 @@ angular.module('iMotoApp')
       else return 'display';
     }
 
+    function getServiceRecordTemplate(serviceRecord) {
+      console.log(serviceRecord.description)
+      if(serviceRecord._id === vm.selectedServiceRecord._id) {
+        return 'edit';
+      }
+      else return 'display';
+    }
+
     function addPart() {
       console.log(vm.part)
       $http
@@ -71,6 +87,49 @@ angular.module('iMotoApp')
         })
         vm.part = {};
 
+    }
+
+    function addServiceRecord() {
+      console.log(vm.serviceRecord)
+      $http
+        .post('http://localhost:3000/motorcycles/' + $stateParams.id + '/serviceRecord', vm.serviceRecord)
+        .then(function(response) {
+          $state.go('home', null, { reload: true });
+          MotorcyclesService.getMotorcycles()
+        })
+        vm.serviceRecord = {};
+
+    }
+
+    function removeServiceRecord(serviceRecord) {
+      //console.log(MotorcyclesService.motorcycles)
+      $http
+        .delete('http://localhost:3000/motorcycles/' + $stateParams.id + '/serviceRecord/' + serviceRecord._id)
+        .then(function(response) {
+          $state.go('home', null, { reload: true });
+          MotorcyclesService.getMotorcycles()
+        })
+    }
+
+    function editServiceRecord(serviceRecord) {
+      vm.selectedServiceRecord = angular.copy(serviceRecord)
+    }
+
+    function updateServiceRecord(serviceRecord) {
+      console.log('updating this service record')
+      console.log(vm.selectedServiceRecord)
+      let updatedServiceRecord = {
+          description: vm.selectedServiceRecord.description,
+          performedAt: vm.selectedServiceRecord.performedAt,
+          cost: vm.selectedServiceRecord.cost,
+          Date: vm.selectedServiceRecord.Date,
+      }
+      $http
+        .put('http://localhost:3000/motorcycles/' + $stateParams.id + '/serviceRecord/' + serviceRecord._id, updatedServiceRecord)
+        .then(function(response) {
+          $state.go('home', null, { reload: true });
+          MotorcyclesService.getMotorcycles()
+        })
     }
 
     $scope.selectedMotorcycle = MotorcyclesService.findMotorcycles($stateParams.id)

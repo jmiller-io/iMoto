@@ -38,6 +38,20 @@ router.route('/motorcycles/:motoid/part/:partid')
   .put(imotoController.updatePart)
 
 
+router.route('/motorcycles/:id/servicerecord')
+
+  // POST a new Service Record
+  .post(imotoController.createServiceRecord)
+
+router.route('/motorcycles/:motoid/serviceRecord/:serviceRecordid')
+
+  // DELETE service record
+  .delete(imotoController.removeServiceRecord)
+
+  // Update a Service Record
+  .put(imotoController.updateServiceRecord)
+
+
 router.route('/gear')
   // GET all gear
   .get(imotoController.getGear)

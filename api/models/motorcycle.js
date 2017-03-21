@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var PartSchema = require('./part.js')
+var PartSchema = require('./part.js');
+var ServiceRecordSchema = require('./service.js');
 
 var MotorcycleSchema = new mongoose.Schema({
   year: Number,
@@ -14,7 +15,7 @@ var MotorcycleSchema = new mongoose.Schema({
     companyPhone: String,
     policyNumber: String
   },
-  serviceRecords: [],
+  serviceRecords: [ServiceRecordSchema.ServiceSchema],
   parts: [PartSchema.PartSchema]
 });
 

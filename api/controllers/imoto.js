@@ -1,6 +1,7 @@
 const Part = require('../models/part.js');
-var Motorcycle = require('../models/motorcycle.js');
-var RidingGear = require('../models/ridinggear.js');
+const Motorcycle = require('../models/motorcycle.js');
+const RidingGear = require('../models/ridinggear.js');
+const ServiceRecord = require('../models/service.js');
 
 function getMotorcycles(request, response) {
   Motorcycle.find(function(error, motorcycles) {
@@ -49,13 +50,47 @@ function createPart(request, response) {
   })
 }
 
-function updatePart(request, response) {
+function createServiceRecord(request, response) {
+  var id= request.params.id;
+  var serviceRecord = new ServiceRecord.ServiceRecord(request.body)
+  Motorcycle.findById(request.params.id, function(error, motorcycle) {
+    motorcycle.serviceRecords.push(serviceRecord)
+    motorcycle.save(function(error) {
+      if (error) response.json({message: 'Could not create service record b/c: ' + error})
+        response.json({serviceRecord: serviceRecord})
+    })
+  })
+}
 
+function updateServiceRecord(request, response) {
+  Motorcycle.findById(request.params.motoid, function(err, moto) {
+    var subDoc = moto.serviceRecords.id(request.params.serviceRecordid);
+    subDoc.set(request.body)
+    moto.save(function(error) {
+      if (error) response.json({message: 'Could not update service record b/c: ' + error})
+        response.json({message: 'Service Record created successfully'})
+    })
+  })
+}
+
+function removeServiceRecord(request, response) {
+  Motorcycle.findById(request.params.motoid, function(err, moto) {
+    let serviceRecord = moto.serviceRecords.id(request.params.serviceRecordid)
+    serviceRecord.remove(function(err) {
+      if (err) response.json({message: 'Could not remove Service Record b/c: ' + err})
+      response.json({message: 'Service Record removed successfully'})
+      moto.save()
+    })
+  })
+}
+
+
+function updatePart(request, response) {
   Motorcycle.findById(request.params.motoid, function(err, moto) {
     var subDoc = moto.parts.id(request.params.partid);
     subDoc.set(request.body)
     moto.save(function(error) {
-      if (error) response.json({message: 'Could not create part b/c: ' + error})
+      if (error) response.json({message: 'Could not update part b/c: ' + error})
         response.json({message: 'Part created successfully'})
     })
   })
@@ -113,6 +148,9 @@ module.exports = {
   createPart: createPart,
   updatePart: updatePart,
   removePart: removePart,
+  createServiceRecord: createServiceRecord,
+  updateServiceRecord: updateServiceRecord,
+  removeServiceRecord: removeServiceRecord,
   getGear: getGear,
   createGear: createGear,
   removeGear: removeGear,

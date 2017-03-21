@@ -3,9 +3,14 @@ var mongoose = require('mongoose');
 var ServiceSchema = new mongoose.Schema({
   description: String,
   cost: Number,
-  performedAt: String
+  performedAt: String,
   Date: Date
 })
 
-const Service = mongoose.model('Service', ServiceSchema);
-module.exports = Service;
+const ServiceRecord = mongoose.model('ServiceRecord', ServiceSchema);
+module.exports = ServiceRecord;
+
+module.exports = {
+  ServiceRecord: ServiceRecord,
+  ServiceSchema: ServiceSchema
+};
