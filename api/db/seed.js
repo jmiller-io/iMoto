@@ -11,6 +11,7 @@ var mcycle = new Motorcycle({
   mileage: 23450,
   vin: '1J309CJ3BB3J',
   purchasePrice: 4800,
+  purchaseDate: '3/25/2009',
   licensePlate: '22U940',
   insurance: {
     company: 'State Farm',

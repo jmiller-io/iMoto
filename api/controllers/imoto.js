@@ -29,6 +29,14 @@ function getMotorcycle(request, response) {
   })
 }
 
+function updateMotorcycle(request, response) {
+  console.log(request.body)
+  Motorcycle.update({_id: request.params.id}, {$set: request.body}, function(error) {
+    if (error) response.json({message: 'Could not update motorcycle b/c:' + error})
+    response.json({message: 'motorcycle successfully updated'})
+  })
+}
+
 function deleteMotorcycle(request, response) {
   var id = request.params.id;
   Motorcycle.remove({_id: id}, function(error) {
@@ -144,6 +152,7 @@ module.exports = {
   getMotorcycles: getMotorcycles,
   createMotorcycle: createMotorcycle,
   getMotorcycle: getMotorcycle,
+  updateMotorcycle: updateMotorcycle,
   deleteMotorcycle: deleteMotorcycle,
   createPart: createPart,
   updatePart: updatePart,
