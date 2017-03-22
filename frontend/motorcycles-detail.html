@@ -16,7 +16,7 @@
     <div ng-show="tab === 1">
       <div id="motorcycleInfo">
         <table id="motoInfoTable" ng-show="showMotoInfo">
-          <tr><td><strong>{{selectedMotorcycle.year}}</strong></td><td><strong>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong></td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editMotoDetails()"></button><button class="btn btn-danger glyphicon glyphicon-remove" ng-click="motorcycle.deleteMotorcycles(selectedMotorcycle)"></button><br></tr>
+          <tr><td><strong>{{selectedMotorcycle.year}}</strong></td><td><strong>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong></td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editMotoDetails()"></button> <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="motorcycle.deleteMotorcycles(selectedMotorcycle)"></button><br></tr>
           <tr><td><strong>Mileage</strong></td><td>{{selectedMotorcycle.mileage | number}}</td><td></td></tr>
           <tr><td><strong>Purchase Price</strong></td><td>{{selectedMotorcycle.purchasePrice | currency}}</td><td></td></tr>
           <tr><td><strong>Purchase Date</strong></td><td>{{selectedMotorcycle.purchaseDate}}</td><td></td></tr>
