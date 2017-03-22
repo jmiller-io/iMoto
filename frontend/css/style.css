@@ -1,34 +1,3 @@
-#motorcycleInfo {
-  display: inline-block;
-  border: 1px solid red;
-}
-
-#bike_img {
-  display: inline-block;
-  border: 1px solid blue;
-  float: right;
-}
-
-#motorcycleInfoWrapper {
-  border: 1px solid green;
-  height: 500px;
-}
-
-
-/*button.delete {
-  margin-left: 0.618rem;
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 100px;
-  background: white;
-  color: rgba(0,0,0,0.18);
-  cursor: pointer;
-}
-
-button.delete:hover {
-  border-color: grey;
-  color: grey;
-}*/
-
 table {
   border-collapse: collapse;
   margin: 0 auto;

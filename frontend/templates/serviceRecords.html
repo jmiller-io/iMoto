@@ -1,4 +1,5 @@
 <section ng-controller="MotorcyclesServiceRecordsController as motorcycle">
+  <h4>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}} Service History</h4>
 <form ng-submit="motorcycle.addServiceRecord()">
         <label for="description">Description:</label>
         <input type="text" name="description" ng-model="motorcycle.serviceRecord.description">

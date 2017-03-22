@@ -1,5 +1,5 @@
 <section ng-controller="MotorcyclesPartsController as motorcycle">
-  <h4>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</h4>
+  <h4>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}} Parts</h4>
   <form ng-submit="motorcycle.addPart()">
         <label for="manufacturer">Manufacturer:</label>
         <input type="text" name="manufacturer" ng-model="motorcycle.part.manufacturer">
