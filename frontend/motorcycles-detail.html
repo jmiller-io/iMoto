@@ -16,7 +16,7 @@
     <div ng-show="tab === 1">
       <div id="motorcycleInfo">
         <table id="motoInfoTable" ng-show="showMotoInfo">
-          <tr><td><strong>{{selectedMotorcycle.year}}</strong></td><td><strong>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong></td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editMotoDetails()"></button><button class="btn btn-danger" ng-click="motorcycle.deleteMotorcycles(selectedMotorcycle)">X</button><br></tr>
+          <tr><td><strong>{{selectedMotorcycle.year}}</strong></td><td><strong>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong></td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editMotoDetails()"></button><button class="btn btn-danger glyphicon glyphicon-remove" ng-click="motorcycle.deleteMotorcycles(selectedMotorcycle)"></button><br></tr>
           <tr><td><strong>Mileage</strong></td><td>{{selectedMotorcycle.mileage | number}}</td><td></td></tr>
           <tr><td><strong>Purchase Price</strong></td><td>{{selectedMotorcycle.purchasePrice | currency}}</td><td></td></tr>
           <tr><td><strong>Purchase Date</strong></td><td>{{selectedMotorcycle.purchaseDate}}</td><td></td></tr>
@@ -36,9 +36,8 @@
             <input class="btn btn-success" type="submit" value="Save">
             <button type="button" class="btn btn-danger" ng-click="motorcycle.reset()">Cancel</button>
           </form>
-          <pre>motorcycle = {{motorcycle | json}}</pre>
+         <!--  <pre>motorcycle = {{motorcycle | json}}</pre> -->
         </div>
-        <!-- <strong>{{selectedMotorcycle.year}} {{selectedMotorcycle.make}} {{selectedMotorcycle.model}} </strong><button class="btn btn-danger" ng-click="motorcycle.deleteMotorcycles(selectedMotorcycle)">X</button><br> -->
         <!--  <p>Hello Insurance...</p>
       <ul class="inlineList">
         <li><strong>Policy Number:</strong> {{selectedMotorcycle.insurance.policyNumber}}</li>
@@ -54,83 +53,4 @@
         </ul> -->
       </div>
     </div>
-    <!-- <div ng-show="tab === 3"> -->
-      <!-- <form ng-submit="motorcycle.addServiceRecord()">
-        <label for="description">Description:</label>
-        <input type="text" name="description" ng-model="motorcycle.serviceRecord.description">
-        <label for="performedAt">Service Performed By:</label>
-        <input type="text" name="performedAt" ng-model="motorcycle.serviceRecord.performedAt">
-        <label for="cost">Cost:</label>
-        <input type="number" name="cost" ng-model="motorcycle.serviceRecord.cost">
-        <label for="date">Date Performed:</label>
-        <input type="date" name="date" ng-model="motorcycle.serviceRecord.Date">
-        <input class="btn" type="submit" value="Add Service Record">
-      </form>
-      <table>
-        <tr><th>Description</th><th>Performed By</th><th>Cost</th><th>Date Performed</th><th>Edit</th></tr>
-          <script type="text/ng-template" id='display'>
-            <td>{{serviceRecord.description}}</td>
-            <td>{{serviceRecord.performedAt}}</td>
-            <td>{{serviceRecord.cost | currency}}</td>
-            <td>{{serviceRecord.Date | date}}</td>
-            <td>
-              <button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editServiceRecord(serviceRecord)"></button>
-              <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="motorcycle.removeServiceRecord(serviceRecord)"></button>
-            </td>
-          </script>
-          <script type="text/ng-template" id='edit'>
-            <td><input type="text" ng-model="motorcycle.selectedServiceRecord.description" value="motorcycle.selectedServiceRecord.description"></td>
-            <td><input type="text" ng-model="motorcycle.selectedServiceRecord.performedAt" value="motorcycle.selectedServiceRecord.performedAt"></td>
-            <td><input type="text" ng-model="motorcycle.selectedServiceRecord.cost" value="motorcycle.selectedServiceRecord.cost"></td>
-            <td><input type="date" ng-model="motorcycle.selectedServiceRecord.Date" value="1990-01-01"></td>
-            <td>
-              <button type="button" class="btn btn-success" ng-click="motorcycle.updateServiceRecord(serviceRecord)">Save</button>
-              <button type="button" class="btn btn-danger" ng-click="motorcycle.reset()">Cancel</button>
-            </td>
-          </script>
-        <tr ng-repeat="serviceRecord in selectedMotorcycle.serviceRecords" ng-include="motorcycle.getServiceRecordTemplate(serviceRecord)"> {{serviceRecord.description}}</tr>
-      </table> -->
-    <!-- </div>
-    <div ng-show="tab === 4">
-      <form ng-submit="motorcycle.addPart()">
-        <label for="manufacturer">Manufacturer:</label>
-        <input type="text" name="manufacturer" ng-model="motorcycle.part.manufacturer">
-        <label for="description">Product Description:</label>
-        <input type="text" name="description" ng-model="motorcycle.part.description">
-        <label for="partNumber">Part Number:</label>
-        <input type="text" name="partNumber" ng-model="motorcycle.part.partNumber">
-        <label for="cost">Price Paid:</label>
-        <input type="number" name="cost" ng-model="motorcycle.part.cost">
-        <label for="installDate">Install Date:</label>
-        <input type="date" name="installDate" ng-model="motorcycle.part.installDate">
-        <input class="btn" type="submit" value="Add Part">
-      </form>
-      <table>
-        <tr><th>Manufacturer</th><th>Description</th><th>Part Number</th><th>Price Paid</th><th>Install Date</th><th>Edit</th></tr>
-          <script type="text/ng-template" id='display'>
-            <td>{{part.manufacturer}}</td>
-            <td>{{part.description}}</td>
-            <td>{{part.partNumber}}</td>
-            <td>{{part.cost | currency}}</td>
-            <td>{{part.installDate | date}}</td>
-            <td>
-              <button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editPart(part)"></button>
-              <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="motorcycle.removePart(part)"></button>
-            </td>
-          </script>
-          <script type="text/ng-template" id='edit'>
-            <td><input type="text" ng-model="motorcycle.selected.manufacturer" value="motorcycle.selected.manufacturer"></td>
-            <td><input type="text" ng-model="motorcycle.selected.description" value="motorcycle.selected.description"></td>
-            <td><input type="text" ng-model="motorcycle.selected.partNumber" value="motorcycle.selected.partNumber"></td>
-            <td><input type="text" ng-model="motorcycle.selected.cost" value="motorcycle.selected.cost"></td>
-            <td><input type="date" ng-model="motorcycle.selected.installDate" value="1990-01-01"></td>
-            <td>
-              <button type="button" class="btn btn-success" ng-click="motorcycle.updatePart(part)">Save</button>
-              <button type="button" class="btn btn-danger" ng-click="motorcycle.reset()">Cancel</button>
-            </td>
-          </script>
-        <tr ng-repeat="part in selectedMotorcycle.parts | orderBy:sortType:sortReverse" ng-include="motorcycle.getTemplate(part)"></tr>
-      </table>
-    </div>
-  </div> -->
 </section>
