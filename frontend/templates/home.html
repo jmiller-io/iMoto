@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="iMotoApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>iMoto</title>
+  </head>
+  <body>
+    <div ng-controller="MotorcyclesDropDownController as view">
+          <div class="container">
+    <div class="row">
+      <nav class="navbar navbar-inverse " role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">iMoto</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="home"  ng-click='navCollapsed = true'>Home</a></li>
+            <li><a ui-sref="closet"  ng-click='navCollapsed = true'>Closet</a></li>
+            <li class="dropdown" uib-dropdown>
+              <a class="dropdown-toggle" uib-dropdown-toggle>
+                <i class="fa fa-cogs"></i> Garage
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="moto in view.motorcycles" ui-sref-active="selected"><a ui-sref="detail({id: moto._id})" ng-click='navCollapsed=true'>{{moto.make}} {{moto.model}}</a></li>
+                <li><a ui-sref="motorcycle-form" ng-click='navCollapsed = true'>Add Motorcycle</a></li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </nav>
+
+    </div>
+
+    <div id="content">
+      <div ui-view>
+        <div class="row">
+          <p>iMoto an app for motorcyclists where to track all their gear and information about their rides such as, service performed, parts installations or modifications, how much money they've invested in it and other general information.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controllers/motorcyclesDropDownController.js"></script>
+    <script src="js/controllers/motorcyclesFormController.js"></script>
+    <script src="js/controllers/motorcyclesDetailController.js"></script>
+    <script src="js/controllers/ridingGearController.js"></script>
+    <script src="js/controllers/motorcyclesServiceRecordsController.js"></script>
+    <script src="js/controllers/motorcyclesPartsController.js"></script>
+  </body>
+</html>

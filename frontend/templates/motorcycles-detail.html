@@ -1,0 +1,56 @@
+<section id="motorcycleInfoWrapper" ng-controller="MotorcyclesDetailController as motorcycle">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    <li><a href ng-click="tab = 1" >Moto Info</a></li>
+    <!-- <li><a href ng-click="tab = 2">Insurance</a></li> -->
+    <li><a href ui-sref="serviceRecords({id: selectedMotorcycle._id})">Service Records</a></li>
+    <li><a href ui-sref="motorcycleParts({id: selectedMotorcycle._id})">Parts</a></li>
+  </ul>
+
+<div ui-view>
+
+</div>
+  <!-- Tab panes -->
+  <div class="tab-content ">
+    <div ng-show="tab === 1">
+      <div id="motorcycleInfo">
+        <table id="motoInfoTable" ng-show="showMotoInfo">
+          <tr><td><strong>{{selectedMotorcycle.year}}</strong></td><td><strong>{{selectedMotorcycle.make}} {{selectedMotorcycle.model}}</strong></td><td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click="motorcycle.editMotoDetails()"></button> <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="motorcycle.deleteMotorcycles(selectedMotorcycle)"></button><br></tr>
+          <tr><td><strong>Mileage</strong></td><td>{{selectedMotorcycle.mileage | number}}</td><td></td></tr>
+          <tr><td><strong>Purchase Price</strong></td><td>{{selectedMotorcycle.purchasePrice | currency}}</td><td></td></tr>
+          <tr><td><strong>Purchase Date</strong></td><td>{{selectedMotorcycle.purchaseDate}}</td><td></td></tr>
+          <tr><td><strong>VIN</strong></td><td>{{selectedMotorcycle.vin}}</td><td></td></tr>
+          <tr><td><strong>License Plate</strong></td><td>{{selectedMotorcycle.licensePlate}}</td><td></td></tr>
+        </table>
+        <div id="motoEditsForm" ng-show="showMotoEditForm">
+          <form ng-submit="motorcycle.saveEdits()">
+            <label>Year: <input type="Number" name="year" ng-model="motorcycle.motoEdits.year" value="{{selectedMotorcycle.year}}"></label>
+            <label>Make: <input type="text" name="make" ng-model="motorcycle.motoEdits.make" value="{{selectedMotorcycle.make}}"></label>
+            <label>Model: <input type="text" name="model" ng-model="motorcycle.motoEdits.model" value="{{selectedMotorcycle.model}}"></label>
+            <label>Mileage: <input type="text" name="mileage" ng-model="motorcycle.motoEdits.mileage" value="{{selectedMotorcycle.mileage}}"></label>
+            <label>Purchase Price: <input type="number" name="purchasePrice" ng-model="motorcycle.motoEdits.purchasePrice" value="{{selectedMotorcycle.purchasePrice}}"></label>
+            <label>Purchase Date: <input type="text" name="purchaseDate" ng-model="motorcycle.motoEdits.purchaseDate" value="{{selectedMotorcycle.purchaseDate}}"></label>
+            <label>VIN: <input type="text" name="vin" ng-model="motorcycle.motoEdits.vin" value="{{selectedMotorcycle.vin}}"></label>
+            <label>licensePlate: <input type="text" name="licensePlate" ng-model="motorcycle.motoEdits.licensePlate" value="{{selectedMotorcycle.licensePlate}}"></label>
+            <input class="btn btn-success" type="submit" value="Save">
+            <button type="button" class="btn btn-danger" ng-click="motorcycle.reset()">Cancel</button>
+          </form>
+         <!--  <pre>motorcycle = {{motorcycle | json}}</pre> -->
+        </div>
+        <!--  <p>Hello Insurance...</p>
+      <ul class="inlineList">
+        <li><strong>Policy Number:</strong> {{selectedMotorcycle.insurance.policyNumber}}</li>
+        <li><strong>Insurance Company:</strong> {{selectedMotorcycle.insurance.company}}</li>
+        <li><strong>Insurance Phone:</strong> {{selectedMotorcycle.insurance.companyPhone}}</li>
+      </ul> -->
+        <!-- <ul class="inlineList">
+          <li>Mileage: <span class="values">{{selectedMotorcycle.mileage | number}}</span></li>
+          <li>Purchase Price: <span class="values">{{selectedMotorcycle.purchasePrice | currency}}</span></li>
+          <li>Purchase Date: <span class="values">Nov. 1st, 2009</span></li>
+          <li>VIN: <span class="values">{{selectedMotorcycle.vin}}</span></li>
+          <li>License Plate #: <span class="values">{{selectedMotorcycle.licensePlate}}</span></li>
+        </ul> -->
+      </div>
+    </div>
+</section>
